@@ -1,0 +1,27 @@
+
+    <h1>Add New Task</h1>
+    {{#if error}}
+    <div id="errBox"><h2 id="errMsg">{{error}}</h2></div>
+    {{/if}}
+    {{#if success}}
+    <div id="succssesBox"><h2 id="succssesMsg">Book Added</h2></div>
+    {{/if}}
+    <div class="container">
+        <form action="/addTask" method="POST"  enctype=multipart/form-data >
+            <label for="taskTitle">Title</label>
+            <input type="text" id="taskTitle" name="taskTitle" placeholder="The title of the Task">
+
+            <label for="expectedDay">Due date for this task</label>
+            <input type="date" id="expectedDay" name="expectedDay" placeholder="Due date for the task">
+                <br>
+            <label for="taskDescription">Task description</label>
+            <textarea id="taskDescription" name="taskDescription" placeholder="Task description" rows="10" cols="10"></textarea>
+            <select name="category">
+               <option value="other">Other</option>
+               <option value="work">Work Tasks</option>
+               <option value="personal">Personal Tasks</option>
+            </select>
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>

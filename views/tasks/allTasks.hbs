@@ -1,0 +1,52 @@
+    
+
+     {{#if filter }}
+    <h1>HERE ARE ALL YOUR TASK FROM CATEGORY: {{filter}}:</h1>
+      {{else}}
+       <h1>HERE ARE ALL YOUR ACTIVE TASK:</h1>
+    {{/if}}
+    <div class="container">
+        <form action="/filterTasks" method="POST"  enctype=multipart/form-data >
+       
+            <select name="category">
+               <option value="all">Choose a filter</option>
+               <option value="other">Other</option>
+               <option value="work">Work Tasks</option>
+               <option value="personal">Personal Tasks</option>
+            </select>
+            <input type="submit" value="Submit">
+        </form>
+       {{#each tasks}}
+        <div class="book {{customCSS}}">
+            <div class="content">
+            <h3>Title:  {{taskTitle}}</h3>
+             <pre> Description: {{taskDescription}}</pre>
+           
+          {{#if isOnTime }}
+          <h4>You have: {{days}} days left to compete this task</h4>
+          {{else}}
+          <h4 >This task is late with: {{days}} days</h4>
+          {{/if}}
+            <h4 >Category: <i>{{category}}</i></h4>
+            <h4 >Status: <i>{{status}}</i></h4>
+        </div>
+        <br>
+             <button>
+                <a href="/delete/{{_id}}">Delete</a>
+            </button>
+            <button>
+                <a href="/edit/{{_id}}">Edit</a>
+            </button>
+            <button>
+                <a href="/close/{{_id}}">Mark as Closed</a>
+            </button>
+        </div>
+        {{else}}
+         <div class="book">
+           <p>No active Tasks</p>
+        </div>
+        {{/each}}
+    </div>
+
+
+

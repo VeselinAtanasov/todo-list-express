@@ -1,0 +1,33 @@
+
+    <h1>Edit This Task:</h1>
+    {{#if error}}
+    <div id="errBox"><h2 id="errMsg">{{error}}</h2></div>
+    {{/if}}
+    {{#if success}}
+    <div id="succssesBox"><h2 id="succssesMsg">Book Added</h2></div>
+    {{/if}}
+    <div class="container">
+        <form action="/edit/{{_id}}" method="POST"  enctype=multipart/form-data >
+            <label for="taskTitle">Title</label>
+            <input type="text" id="taskTitle" name="taskTitle" value="{{taskTitle}}" > </input>
+
+            <label for="expectedDay">Due date for this task</label>
+            <input type="date" id="expectedDay" name="expectedDay" value="{{expectedDay}}"> </input>
+                <br>
+                <br>
+            <label for="taskDescription">Task description</label>
+            <textarea id="taskDescription" name="taskDescription" rows="10" cols="10">{{taskDescription}}</textarea>
+            <select name="status" value="{{status}}" >
+               <option value="open">Open</option>
+               <option value="closed">Closed</option>
+            </select>
+            <select name="category" value="{{category}}" >
+               <option value="other">Other</option>
+               <option value="work">Work Tasks</option>
+               <option value="personal">Personal Tasks</option>
+            </select>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>

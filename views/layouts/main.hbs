@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Task Manager</title>
+    {{#if error}}
+    <p class="error">{{error}}</p>
+    {{/if}}
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+</head>
+
+<body>
+    <header>
+        <div class="inner">
+            <nav>
+                <a href="/" class="logo"><img class="logo" src="/static/images/expressjs-card.png" alt="expressLogo"></a>
+                <ul>
+                    <li><a href="/addTask">Add Task</a></li>
+                    <li><a href="/">View All Tasks</a></li>
+                    <li><a href="/viewClosed">View All Closed</a></li>
+ 
+                </ul>
+            </nav>
+        </div>
+ 
+    </header>
+    {{{body}}}
+</body>
+
+</html>
