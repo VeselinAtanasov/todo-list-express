@@ -108,6 +108,7 @@ function filterTasksByCategory (params, filter, closed) {
   let data = params;
   if (filter !== constants.categories.ALL) {
     data = params.filter((a, b) => a.category === filter);
+    params = data;
   }
 
   if (!closed) {
