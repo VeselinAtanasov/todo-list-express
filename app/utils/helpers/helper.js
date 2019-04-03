@@ -108,14 +108,13 @@ function filterTasksByCategory (params, filter, closed) {
   let data = params;
   if (filter !== constants.categories.ALL) {
     data = params.filter((a, b) => a.category === filter);
-    params = data;
   }
 
   if (!closed) {
-    data = params.filter((a, b) => a.status !== constants.STATUS_CLOSED);
+    data = data.filter((a, b) => a.status !== constants.STATUS_CLOSED);
   }
   if (closed) {
-    data = params.filter((a, b) => a.status === constants.STATUS_CLOSED);
+    data = data.filter((a, b) => a.status === constants.STATUS_CLOSED);
   }
   data.forEach(e => {
     let days = getDayDifference(e.expectedDay, getCurrentDayWithoutHours());
