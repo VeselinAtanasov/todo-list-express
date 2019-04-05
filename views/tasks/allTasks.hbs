@@ -37,10 +37,17 @@
             <button>
                 <a href="/edit/{{_id}}">Edit</a>
             </button>
+            {{#if canReOpen}}
             <button>
-                <a href="/close/{{_id}}">Mark as Closed</a>
+              <a href="/reopen/{{_id}}">Reopen</a>
             </button>
+            {{else}}
+             <button>
+             <a href="/close/{{_id}}">Close</a>
+             </button>
+              {{/if}}
         </div>
+        
         {{else}}
          <div class="book">
            <p>No active Tasks</p>

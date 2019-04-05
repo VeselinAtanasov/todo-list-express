@@ -9,6 +9,7 @@ module.exports = (app) => {
   app.post('/edit/:id', controllers.taskController.updateTaskByID);
   app.post('/filterTasks', controllers.taskController.filterByCategory);
   app.get('/close/:id', controllers.taskController.changeStatusToClosed);
+  app.get('/reopen/:id', controllers.taskController.changeStatusToOpen);
   app.get('/viewClosed', controllers.taskController.getAllClosedTasks);
 
   app.all('*', (req, res) => {

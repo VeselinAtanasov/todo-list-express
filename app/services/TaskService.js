@@ -24,12 +24,12 @@ class TaskService {
         .catch(e => reject(e));
     });
   }
-  updateStatus (taskID) {
+  updateStatus (taskID, status) {
     return new Promise((resolve, reject) => {
       Task
         .findOne({ _id: taskID })
         .then(task => {
-          task.status === 'open' ? task.status = 'closed' : task.status = 'open';
+          task.status = status; // === 'open' ? task.status = 'closed' : task.status = 'open';
           this.updateTaskByID(taskID, task)
             .then(r => resolve(r))
             .catch(e => reject(e));

@@ -1,6 +1,6 @@
 const helper = require('../utils/helpers/helper');
 const TaskService = require('../services/TaskService.js');
-// const constants = require('../utils/helpers/constants');
+const constants = require('../utils/helpers/constants');
 
 module.exports = {
   listAllTasks: (req, res) => {
@@ -71,7 +71,15 @@ module.exports = {
     let id = req.params.id;
     let taskService = new TaskService();
     taskService
-      .updateStatus(id)
+      .updateStatus(id, constants.CLOSE)
+      .then(data => res.redirect('/'))
+      .catch(e => res.render('tasks/allTasks.hbs', { error: e.message }));
+  },
+  changeStatusToOpen: (req, res) => {
+    let id = req.params.id;
+    let taskService = new TaskService();
+    taskService
+      .updateStatus(id, constants.OPEN)
       .then(data => res.redirect('/'))
       .catch(e => res.render('tasks/allTasks.hbs', { error: e.message }));
   },
@@ -81,6 +89,9 @@ module.exports = {
       .getAllTasks()
       .then(data => {
         let tasks = helper.filterTasksByCategory(data, 'all', true);
+        tasks.forEach(t => {
+          t.canReOpen = true;
+        });
         res.render('tasks/allTasks.hbs', { tasks });
       });
   }

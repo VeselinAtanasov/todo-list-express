@@ -29,5 +29,7 @@ module.exports = {
   DUE_DATE_NOT_A_STRING: 'Expected date is not a string',
   EMPTY_DUE_DATE: 'Expected date is empty string',
   DUE_DATE_EXPIRED: 'You are trying to set Due Date, which is already expired',
-  CATEGORY_ERROR: 'Please revise you category and choose one form the list'
+  CATEGORY_ERROR: 'Please revise you category and choose one form the list',
+  OPEN: 'open',
+  CLOSE: 'close'
 };
